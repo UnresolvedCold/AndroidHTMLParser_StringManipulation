@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
+import com.schwifty.htmlparser.HTMLParse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +54,8 @@ public class UnlimitedPager extends AppCompatActivity {
                     public void onCompleted(Exception e, String result)
                     {
 
-                        Log.d("HTML",result);
+                        String [] s= HTMLParse.getInnerHTMLs(result,"article");
+                        Log.d("HTML",s[0]);
                     }
                 });
     }

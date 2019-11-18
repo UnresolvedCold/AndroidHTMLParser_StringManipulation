@@ -6,7 +6,7 @@ public class HTMLParse {
     {
         if(HTML.contains(TAG))
         {
-            return HTML.split("<"+TAG+"")[1].split(">")[1].split("</"+TAG+"")[0];
+            return HTML.split("<"+TAG+"")[1].split(">",2)[1].split("</"+TAG+"")[0];
         }
 
         return null;
@@ -17,12 +17,13 @@ public class HTMLParse {
         if(HTML.contains(TAG))
         {
             String[] content = HTML.split("<"+TAG);
-            int size = content.length;
-            String [] result = new String[size];
 
-            for (int i=0;i<size;i++)
+            int size = content.length;
+            String [] result = new String[size-1];
+
+            for (int i=1;i<size;i++)
             {
-                result[i] = content[i].split(">")[1].split("</"+TAG)[0];
+                result[i-1] = content[i].split(">",2)[1].split("</"+TAG)[0];
             }
 
             return result;
